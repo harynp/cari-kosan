@@ -4,9 +4,13 @@ const mongoose   = require('mongoose')
 const cors       = require('cors')
 const app        = express()
 
+
+var atlasURI = 'mongodb://cari-kosan:cari-kosan-mantan-hacktiv8@cluster0-shard-00-00-dwnma.mongodb.net:27017,cluster0-shard-00-01-dwnma.mongodb.net:27017,cluster0-shard-00-02-dwnma.mongodb.net:27017/admin?replicaSet=Cluster0-shard-0&ssl=true'
+
 mongoose.connect('mongodb://localhost/cari-kosan', (err) => {
-    if (!err) { console.log('mongoose connected'); }
-    else { console.log('ERROR, NOT CONNECTED'); }
+// mongoose.connect(atlasURI, (err) => {
+    if (err) {console.log('NOT CONNECTED', err)}
+    else{console.log('mongoose connected')}
 })
 
 app.use(cors())
