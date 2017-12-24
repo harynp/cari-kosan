@@ -1,10 +1,7 @@
 const KamarModel = require('../models/Kamar')
 const redis = require('redis')
 require('dotenv').config()
-const imagesMulter = require('../helper/multer-images')
 
-const upload = imagesMulter.multer.single('image')
-const GCPupload = imagesMulter.sendUploadToGCS
 class KamarClass {
     constructor() {
     }

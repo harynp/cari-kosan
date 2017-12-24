@@ -6,6 +6,7 @@ var userSchema = new Schema({
     password: { type: String, required: true },
     passwordConf: { type: String, required: true },
     fullname: { type: String},
+    avatar: {type:String},
     active: false,
     email: { type: String, required: true },
     phone: { type: String, required: true },

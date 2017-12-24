@@ -20,13 +20,15 @@ class UserClass {
     }
 
     static createUser (req,res) {
+        // res.send(typeof req.file.cloudStoragePublicUrl)
         var hash = bcrypt.hashSync(req.body.password, salt)
         UserModel.create({
             username: req.body.username,
             password: hash,
             email: req.body.email,
             phone: req.body.phone,
-            role:req.body.role
+            role:req.body.role,
+            avatar: req.file.cloudStoragePublicUrl
         })
         .then( result => {
             res.send(result)
