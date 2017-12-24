@@ -2,9 +2,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
 
-export const isLogin = (req,res,next) => {
-
-    jwt.verify(req.body.token, process.env.SECRET_KEY, (err,decoded) =>{
+const isLogin = (req,res,next) => {
+    jwt.verify(req.headers.token, process.env.USER_SECRET, (err,decoded) =>{
         if(!err) {
             req.locals = decoded
             next()
@@ -15,7 +14,7 @@ export const isLogin = (req,res,next) => {
 
 }
 
-export const isAdmin = (req,res,next) => {
+const isAdmin = (req,res,next) => {
     if (req.locals.role === 'admin'){
         next()
     } else {
@@ -23,7 +22,7 @@ export const isAdmin = (req,res,next) => {
     }
 }
 
-export const authUser = (req,res,next) => {
+const authUser = (req,res,next) => {
     console.log('==== ini locals id === ' + req.locals.id);
     console.log('==== ini params id === ' + req.params.id);
     console.log('==== ini body id === ' + JSON.stringify(req.body.id))
@@ -36,6 +35,11 @@ export const authUser = (req,res,next) => {
     else {
         res.send("access denied")
     }
-
 }
 
+
+module.exports= {
+    isLogin,
+    isAdmin,
+    authUser
+}

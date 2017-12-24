@@ -17,11 +17,13 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
-// const user  = require('./routes/user')
-// const kosan = require('./routes/kosan')
+const user  = require('./routes/user')
+const kosan = require('./routes/kosan')
+const kamar = require('./routes/kamar')
 
-// app.use('/user', user)
-// app.use('/kosan', kosan)
+app.use('/user', user)
+app.use('/kosan', kosan)
+app.use('/kamar', kamar)
 
 app.listen(3000,(err)=>{ 
     if (err) console.log('ERROR PORT 3000')

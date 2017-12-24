@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var kosanSchema = new Schema({
-    mitraObjectId: {
+    mitraId: {
         type: Schema.Types.ObjectId,
-        ref: 'mitra'
+        required: true,
+        ref: 'user'
     },
     name: { type: String, unique: true, required: true },
     fullAddress: { type: String, required: true },
